@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turnieju Axelroda</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand">Turniej Axelroda</a>
+    </nav>
+    <table name="Tournament Results" class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Strategia</th>
+          {% for player in results.keys() %}
+          <th scope="col">{{ player }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for player, scores in results.items() %}
+        <tr>
+          <td>{{ player }}</td>
+          {% for opponent, score in scores.items() %}
+          <td>{{ score }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Strategia</th>
+          <th scope="col">Lata odsiadki</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for player, total in total_scores.items() %}
+        <tr>
+          <td>{{ player }}</td>
+          <td>{{ total }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
